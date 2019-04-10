@@ -24,6 +24,7 @@
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
   <link rel="stylesheet" href="/css/style.css">
+  <link href="https://cdn.bootcss.com/KaTeX/0.7.1/katex.min.css" rel="stylesheet">
 </head>
 </html>
 <body>
@@ -61,51 +62,6 @@
 </header>
       <div class="outer">
         <section id="main">
-  
-    <article id="post-线性同余发生器" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/04/10/线性同余发生器/" class="article-date">
-  <time datetime="2019-04-10T09:29:00.805Z" itemprop="datePublished">2019-04-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>title: 线性同余发生器<br>date: 2019-04-10</p>
-<h3 id="线性同余发生器"><a href="#线性同余发生器" class="headerlink" title="线性同余发生器"></a>线性同余发生器</h3><p>线性同余发生器（<em>Linear congruential generator</em>,<em>LCG</em>）是一种能产生具有不连续计算的伪随机序列的分段线性方程的算法，它代表了最古老和最知名的伪随机序列生成器算法之一。</p>
-<h4 id="生成器定义"><a href="#生成器定义" class="headerlink" title="生成器定义"></a>生成器定义</h4><script type="math/tex; mode=display">
-X_{n+1}=\left(a X_{n}+c\right) \bmod m</script><ul>
-<li><p>$X​$是伪随机序列</p>
-</li>
-<li><p>$m,m&gt;0$表示模量</p>
-</li>
-<li>$a,0&lt;a&lt;m​$表示乘数</li>
-<li>$c,\leq0&lt;m$表示增量</li>
-<li>$X_0,0\leq X_0&lt;m​$表示初始值</li>
-</ul>
-<p>当$c=0$时，该发生器称为<strong>乘法同余发生器</strong>（<em>MCG</em>）</p>
-<h4 id="MCG的实现"><a href="#MCG的实现" class="headerlink" title="MCG的实现"></a><em>MCG</em>的实现</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> A 48271L</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> M 2147483647L</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">Random</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">	Seed = (A * Seed) % M;</span><br><span class="line">	<span class="keyword">return</span> (<span class="keyword">double</span>)Seed / M;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Initialize</span><span class="params">(<span class="keyword">unsigned</span> InitVal)</span> </span>&#123;</span><br><span class="line">	Seed = InitVal;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这种实现方法实现地很直观，但存在一个问题。在32位机器上A * Seed会导致乘法溢出与截断，虽然程序能继续运行，但它影响最终的计算结果，从而影响伪随机性。<br>
-        
-          </p><p class="article-more-link">
-            <a href="/2019/04/10/线性同余发生器/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/10/线性同余发生器/" data-id="cjub0hxkd0001iwt6u9j62855" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
   
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -152,6 +108,60 @@ X_{n+1}=\left(a X_{n}+c\right) \bmod m</script><ul>
 
 
   
+    <article id="post-线性同余发生器" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/10/线性同余发生器/" class="article-date">
+  <time datetime="2019-04-09T16:00:00.000Z" itemprop="datePublished">2019-04-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/10/线性同余发生器/">线性同余发生器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="线性同余发生器"><a href="#线性同余发生器" class="headerlink" title="线性同余发生器"></a>线性同余发生器</h3><p>线性同余发生器（<em>Linear congruential generator</em>,<em>LCG</em>）是一种能产生具有不连续计算的伪随机序列的分段线性方程的算法，它代表了最古老和最知名的伪随机序列生成器算法之一。</p>
+<h4 id="生成器定义"><a href="#生成器定义" class="headerlink" title="生成器定义"></a>生成器定义</h4><script type="math/tex; mode=display">
+X_{n+1}=\left(a X_{n}+c\right) \bmod m</script><ul>
+<li><p>$X​$是伪随机序列</p>
+</li>
+<li><p>$m,m&gt;0$表示模量</p>
+</li>
+<li>$a,0&lt;a&lt;m​$表示乘数</li>
+<li>$c,\leq0&lt;m$表示增量</li>
+<li>$X_0,0\leq X_0&lt;m​$表示初始值</li>
+</ul>
+<p>当$c=0$时，该发生器称为<strong>乘法同余发生器</strong>（<em>MCG</em>）</p>
+<h4 id="MCG的实现"><a href="#MCG的实现" class="headerlink" title="MCG的实现"></a><em>MCG</em>的实现</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> A 48271L</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> M 2147483647L</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">Random</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">	Seed = (A * Seed) % M;</span><br><span class="line">	<span class="keyword">return</span> (<span class="keyword">double</span>)Seed / M;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Initialize</span><span class="params">(<span class="keyword">unsigned</span> InitVal)</span> </span>&#123;</span><br><span class="line">	Seed = InitVal;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这种实现方法实现地很直观，但存在一个问题。在32位机器上A * Seed会导致乘法溢出与截断，虽然程序能继续运行，但它影响最终的计算结果，从而影响伪随机性。<br>
+        
+          </p><p class="article-more-link">
+            <a href="/2019/04/10/线性同余发生器/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/04/10/线性同余发生器/" data-id="cjub0hxkd0001iwt6u9j62855" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
 
 
 </section>
@@ -183,11 +193,11 @@ X_{n+1}=\left(a X_{n}+c\right) \bmod m</script><ul>
       <ul>
         
           <li>
-            <a href="/2019/04/10/线性同余发生器/">(no title)</a>
+            <a href="/2019/04/10/hello-world/">Hello World</a>
           </li>
         
           <li>
-            <a href="/2019/04/10/hello-world/">Hello World</a>
+            <a href="/2019/04/10/线性同余发生器/">线性同余发生器</a>
           </li>
         
       </ul>
@@ -229,5 +239,21 @@ X_{n+1}=\left(a X_{n}+c\right) \bmod m</script><ul>
 
 
   </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 </body>
 </html>
