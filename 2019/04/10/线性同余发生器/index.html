@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>一个人的征途</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="线性同余发生器线性同余发生器（Linear congruential generator,LCG）是一种能产生具有不连续计算的伪随机序列的分段线性方程的算法，它代表了最古老和最知名的伪随机序列生成器算法之一。 生成器定义$$X_{n+1}=\left(a X_{n}+c\right) \bmod m$$  $X​$是伪随机序列  $m,m&amp;gt;0$表示模量  $a,0&amp;lt;a&amp;lt;m​$表示">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一个人的征途">
+<meta property="og:url" content="http://yoursite.com/2019/04/10/线性同余发生器/index.html">
+<meta property="og:site_name" content="一个人的征途">
+<meta property="og:description" content="线性同余发生器线性同余发生器（Linear congruential generator,LCG）是一种能产生具有不连续计算的伪随机序列的分段线性方程的算法，它代表了最古老和最知名的伪随机序列生成器算法之一。 生成器定义$$X_{n+1}=\left(a X_{n}+c\right) \bmod m$$  $X​$是伪随机序列  $m,m&amp;gt;0$表示模量  $a,0&amp;lt;a&amp;lt;m​$表示">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-09T09:08:20.694Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一个人的征途">
+<meta name="twitter:description" content="线性同余发生器线性同余发生器（Linear congruential generator,LCG）是一种能产生具有不连续计算的伪随机序列的分段线性方程的算法，它代表了最古老和最知名的伪随机序列生成器算法之一。 生成器定义$$X_{n+1}=\left(a X_{n}+c\right) \bmod m$$  $X​$是伪随机序列  $m,m&amp;gt;0$表示模量  $a,0&amp;lt;a&amp;lt;m​$表示">
+  
+    <link rel="alternate" href="/atom.xml" title="一个人的征途" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">一个人的征途</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-线性同余发生器" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/10/线性同余发生器/" class="article-date">
+  <time datetime="2019-04-10T08:58:59.769Z" itemprop="datePublished">2019-04-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="线性同余发生器"><a href="#线性同余发生器" class="headerlink" title="线性同余发生器"></a>线性同余发生器</h3><p>线性同余发生器（<em>Linear congruential generator</em>,<em>LCG</em>）是一种能产生具有不连续计算的伪随机序列的分段线性方程的算法，它代表了最古老和最知名的伪随机序列生成器算法之一。</p>
+<h4 id="生成器定义"><a href="#生成器定义" class="headerlink" title="生成器定义"></a>生成器定义</h4><p>$$<br>X_{n+1}=\left(a X_{n}+c\right) \bmod m<br>$$</p>
+<ul>
+<li><p>$X​$是伪随机序列</p>
+</li>
+<li><p>$m,m&gt;0$表示模量</p>
+</li>
+<li>$a,0&lt;a&lt;m​$表示乘数</li>
+<li>$c,\leq0&lt;m$表示增量</li>
+<li>$X_0,0\leq X_0&lt;m​$表示初始值</li>
+</ul>
+<p>当$c=0$时，该发生器称为<strong>乘法同余发生器</strong>（<em>MCG</em>）</p>
+<h4 id="MCG的实现"><a href="#MCG的实现" class="headerlink" title="MCG的实现"></a><em>MCG</em>的实现</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> A 48271L</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> M 2147483647L</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">Random</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">	Seed = (A * Seed) % M;</span><br><span class="line">	<span class="keyword">return</span> (<span class="keyword">double</span>)Seed / M;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Initialize</span><span class="params">(<span class="keyword">unsigned</span> InitVal)</span> </span>&#123;</span><br><span class="line">	Seed = InitVal;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这种实现方法实现地很直观，但存在一个问题。在32位机器上A * Seed会导致乘法溢出与截断，虽然程序能继续运行，但它影响最终的计算结果，从而影响伪随机性。</p>
+<h4 id="Schrage’s-method"><a href="#Schrage’s-method" class="headerlink" title="Schrage’s method"></a>Schrage’s method</h4><p><em>Schrage</em>方法推导过程<br>$$<br>Q=M / A, R=M \% A<br>$$</p>
+<p>$$<br>\begin{aligned} x_{i+1} &amp;=A x_{i} \bmod M=A x_{i}-M\left\lfloor\frac{A x_{i}}{M}\right\rfloor \ &amp;= A x_{i}-M\left\lfloor\frac{x_{i}}{Q}\right\rfloor+ M\left\lfloor\frac{x_{i}}{Q}\right\rfloor- M\left\lfloor\frac{A x_{i}}{M}\right\rfloor \ &amp;= A x_{i}-M\left\lfloor\frac{x_{i}}{Q}\right\rfloor+ M\left(\left\lfloor\frac{x_{i}}{Q}\right\rfloor-\left\lfloor\frac{A x_{i}}{M}\right\rfloor\right) \end{aligned}<br>\\because x_{i}=Q\left\lfloor\frac{x_{i}}{Q}\right\rfloor+ x_{i} \bmod Q<br>\\therefore\begin{aligned} x_{i+1} &amp;=A\left(Q\left\lfloor\frac{x_{i}}{Q}\right\rfloor+ x_{i} \bmod Q\right)-M\left\lfloor\frac{x_{i}}{Q}\right\rfloor+ M\left(\left\lfloor\frac{x_{i}}{Q}\right\rfloor-\left\lfloor\frac{A x_{i}}{M}\right\rfloor\right) \ &amp;=(A Q-M)\left\lfloor\frac{x_{i}}{Q}\right\rfloor+ A\left(x_{i} \bmod Q\right)+M\left(\left\lfloor\frac{x_{i}}{Q}\right\rfloor-\left\lfloor\frac{A x_{i}}{M}\right\rfloor\right) \end{aligned}<br>\\because M=A Q+R,A Q-M=-R<br>\\therefore x_{i+1}=A\left(x_{i} \bmod Q\right)-R\left\lfloor\frac{x_{i}}{Q}\right\rfloor+ M\left(\left\lfloor\frac{x_{i}}{Q}\right\rfloor-\left\lfloor\frac{A x_{i}}{M}\right\rfloor\right)<br>\x_{i+1}=A\left(x_{i} \bmod Q\right)-R\left\lfloor\frac{x_{i}}{Q}\right\rfloor+ M \delta\left(x_{i}\right)<br>\\delta\left(x_{i}\right)=\left\lfloor\frac{x_{i}}{Q}\right\rfloor-\left\lfloor\frac{A x_{i}}{M}\right\rfloor=0|1<br>$$</p>
+<p>因为$R&lt;Q$，故所有的余项均可计算而没有溢出。此外，仅当余项的值小于0时候$\delta\left(x_{i}\right)=1$。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> A 48271L</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> M 2147483647L</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Q ( M / A )</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> R ( M % A )</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> Seed = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">Random</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">long</span> TmpSeed;</span><br><span class="line">	TmpSeed = A * (Seed % Q) - R * (Seed / Q);</span><br><span class="line">	<span class="keyword">if</span> (TmpSeed &gt;= <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		Seed = TmpSeed;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		Seed = TmpSeed + M;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> (<span class="keyword">double</span>)Seed / M;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Initialize</span><span class="params">(<span class="keyword">unsigned</span> InitVal)</span> </span>&#123;</span><br><span class="line">	Seed = InitVal;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>####常用的生成器参数设置</p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>modulu m</th>
+<th>multiplier                                      a</th>
+<th>increment                             c</th>
+<th>output bits of seed in rand() or Random(L)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Numerical Recipes</td>
+<td>2³²</td>
+<td>1664525</td>
+<td>1013904223</td>
+<td></td>
+</tr>
+<tr>
+<td>Borland C/C++</td>
+<td>2³²</td>
+<td>22695477</td>
+<td>1</td>
+<td>bits 30..16 in rand(), 30..0 in lrand()</td>
+</tr>
+<tr>
+<td>glibc (used by GCC)</td>
+<td>2³¹</td>
+<td>1103515245</td>
+<td>12345</td>
+<td>bits 30..0</td>
+</tr>
+<tr>
+<td>ANSI C: Watcom, Digital Mars, CodeWarrior, IBM VisualAge C/C++ C90, C99, C11: Suggestion in the ISO/IEC 9899 , C18</td>
+<td>2³¹</td>
+<td>1103515245</td>
+<td>12345</td>
+<td>bits 30..16</td>
+</tr>
+<tr>
+<td>Borland Delphi, Virtual Pascal</td>
+<td>2³²</td>
+<td>134775813</td>
+<td>1</td>
+<td>bits 63..32 of (seed * L)</td>
+</tr>
+<tr>
+<td>Turbo Pascal</td>
+<td>2³²</td>
+<td>134775813 (0x8088405₁₆)</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>Microsoft Visual/Quick C/C++</td>
+<td>2³²</td>
+<td>214013 (343FD₁₆)</td>
+<td>2531011 (269EC3₁₆)</td>
+<td>bits 30..16</td>
+</tr>
+<tr>
+<td>Microsoft Visual Basic (6 and earlier)</td>
+<td>2²⁴</td>
+<td>1140671485 (43FD43FD₁₆)</td>
+<td>12820163 (C39EC3₁₆)</td>
+<td></td>
+</tr>
+<tr>
+<td>RtlUniform from Native API</td>
+<td>2³¹ - 1</td>
+<td>2147483629 (7FFFFFED₁₆)</td>
+<td>2147483587 (7FFFFFC3₁₆)</td>
+<td></td>
+</tr>
+<tr>
+<td>Apple CarbonLib, C++11’s minstd_rand0</td>
+<td>2³¹ - 1</td>
+<td>16807</td>
+<td>0</td>
+<td>see MINSTD</td>
+</tr>
+<tr>
+<td>C++11’s minstd_rand</td>
+<td>2³¹ - 1</td>
+<td>48271</td>
+<td>0</td>
+<td>see MINSTD</td>
+</tr>
+<tr>
+<td>MMIX by Donald Knuth</td>
+<td>2⁶⁴</td>
+<td>6364136223846793005</td>
+<td>1442695040888963407</td>
+<td></td>
+</tr>
+<tr>
+<td>Newlib, Musl</td>
+<td>2⁶⁴</td>
+<td>6364136223846793005</td>
+<td>1</td>
+<td>bits 63…32</td>
+</tr>
+<tr>
+<td>VMS’s MTH$RANDOM,old versions of glibc</td>
+<td>2³²</td>
+<td>69069 (10DCD₁₆)</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>Java’s java.util.Random, POSIX [ln]rand48, glibc [ln]rand48[_r]</td>
+<td>2⁴⁸</td>
+<td>25214903917 (5DEECE66D₁₆)</td>
+<td>11</td>
+<td>bits 47…16</td>
+</tr>
+<tr>
+<td>random0If Xₙ is even then Xₙ₊₁ will be odd, and vice versa—the lowest bit oscillates at each step.</td>
+<td>134456 = 2³7⁵</td>
+<td>8121</td>
+<td>28411</td>
+<td>X                              n                                      134456                                {\displaystyle {\frac {X_{n}}{134456}}}</td>
+</tr>
+<tr>
+<td>POSIX[jm]rand48, glibc [mj]rand48[_r]</td>
+<td>2⁴⁸</td>
+<td>25214903917 (5DEECE66D₁₆)</td>
+<td>11</td>
+<td>bits 47…15</td>
+</tr>
+<tr>
+<td>POSIX [de]rand48, glibc [de]rand48[_r]</td>
+<td>2⁴⁸</td>
+<td>25214903917 (5DEECE66D₁₆)</td>
+<td>11</td>
+<td>bits 47…0</td>
+</tr>
+<tr>
+<td>cc65</td>
+<td>2²³</td>
+<td>65793 (10101₁₆)</td>
+<td>4282663 (415927₁₆)</td>
+<td>bits 22…8</td>
+</tr>
+<tr>
+<td>cc65</td>
+<td>2³²</td>
+<td>16843009 (1010101₁₆)</td>
+<td>826366247 (31415927₁₆)</td>
+<td>bits 31…16</td>
+</tr>
+<tr>
+<td>Formerly common: RANDU</td>
+<td>2³¹</td>
+<td>65539</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><a href="https://en.wikipedia.org/wiki/Linear_congruential_generator" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Linear_congruential_generator</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/04/10/线性同余发生器/" data-id="cjuazgtmn0001x8t6cj8amiqy" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/04/10/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/04/10/线性同余发生器/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/10/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Xingchen Dai<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
