@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="为Python拓展C代码 为Python编写拓展主要涉及的三个步骤  创建应用代码 根据样板编写封装代码 编译并测试   创建应用代码 使用纯C编写自己要嵌入的代码。 12345678910111213141516171819202122232425262728293031323334353637383940// Extest1.c#include &amp;lt;stdio.h&amp;gt;#include">
+<meta name="description" content="为Python拓展C代码为Python编写拓展主要涉及的三个步骤  创建应用代码 根据样板编写封装代码 编译并测试  创建应用代码使用纯C编写自己要嵌入的代码。 12345678910111213141516171819202122232425262728293031323334353637383940// Extest1.c#include &amp;lt;stdio.h&amp;gt;#include &amp;lt">
 <meta property="og:type" content="article">
 <meta property="og:title" content="为Python拓展C代码">
 <meta property="og:url" content="http://yoursite.com/2019/04/11/为Python拓展C代码/index.html">
 <meta property="og:site_name" content="一个人的征途">
-<meta property="og:description" content="为Python拓展C代码 为Python编写拓展主要涉及的三个步骤  创建应用代码 根据样板编写封装代码 编译并测试   创建应用代码 使用纯C编写自己要嵌入的代码。 12345678910111213141516171819202122232425262728293031323334353637383940// Extest1.c#include &amp;lt;stdio.h&amp;gt;#include">
+<meta property="og:description" content="为Python拓展C代码为Python编写拓展主要涉及的三个步骤  创建应用代码 根据样板编写封装代码 编译并测试  创建应用代码使用纯C编写自己要嵌入的代码。 12345678910111213141516171819202122232425262728293031323334353637383940// Extest1.c#include &amp;lt;stdio.h&amp;gt;#include &amp;lt">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://lonelyone-pics.oss-cn-beijing.aliyuncs.com/blog-pics/python%E6%8B%93%E5%B1%95/Extest.png">
-<meta property="og:updated_time" content="2019-04-11T07:18:21.176Z">
+<meta property="og:updated_time" content="2019-04-11T07:30:33.974Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="为Python拓展C代码">
-<meta name="twitter:description" content="为Python拓展C代码 为Python编写拓展主要涉及的三个步骤  创建应用代码 根据样板编写封装代码 编译并测试   创建应用代码 使用纯C编写自己要嵌入的代码。 12345678910111213141516171819202122232425262728293031323334353637383940// Extest1.c#include &amp;lt;stdio.h&amp;gt;#include">
+<meta name="twitter:description" content="为Python拓展C代码为Python编写拓展主要涉及的三个步骤  创建应用代码 根据样板编写封装代码 编译并测试  创建应用代码使用纯C编写自己要嵌入的代码。 12345678910111213141516171819202122232425262728293031323334353637383940// Extest1.c#include &amp;lt;stdio.h&amp;gt;#include &amp;lt">
 <meta name="twitter:image" content="http://lonelyone-pics.oss-cn-beijing.aliyuncs.com/blog-pics/python%E6%8B%93%E5%B1%95/Extest.png">
 
 
@@ -301,67 +301,157 @@
       
 
       
-        <h2 id="为Python拓展C代码"><a href="#为Python拓展C代码" class="headerlink" title="为Python拓展C代码"></a>为Python拓展C代码</h2><ol>
-<li><p>为Python编写拓展主要涉及的三个步骤</p>
+        <h2 id="为Python拓展C代码"><a href="#为Python拓展C代码" class="headerlink" title="为Python拓展C代码"></a>为Python拓展C代码</h2><p>为Python编写拓展主要涉及的三个步骤</p>
 <ul>
 <li>创建应用代码</li>
 <li>根据样板编写封装代码</li>
 <li>编译并测试</li>
 </ul>
-</li>
-<li><p>创建应用代码</p>
-<p>使用纯C编写自己要嵌入的代码。</p>
+<h3 id="创建应用代码"><a href="#创建应用代码" class="headerlink" title="创建应用代码"></a>创建应用代码</h3><p>使用纯C编写自己要嵌入的代码。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Extest1.c</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fac</span><span class="params">(<span class="keyword">int</span> n)</span>		<span class="comment">//计算阶乘</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n &lt; <span class="number">2</span>) <span class="keyword">return</span>(<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> (n)*fac(n<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">char</span> *<span class="title">reverse</span><span class="params">(<span class="keyword">char</span> *s)</span>	<span class="comment">//反转字符串</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">register</span> <span class="keyword">char</span> t,</span><br><span class="line">            *p = s,</span><br><span class="line">            *q = (s + (<span class="built_in">strlen</span>(s) - <span class="number">1</span>));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (s &amp;&amp; (p &lt; q))</span><br><span class="line">    &#123;</span><br><span class="line">        t = *p;</span><br><span class="line">        *p++ = *q;</span><br><span class="line">        *q-- = t;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span>(s);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">test</span><span class="params">()</span>		<span class="comment">//测试函数</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> s[BUFSIZ];</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"4! == %d\n"</span>, fac(<span class="number">4</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"8! == %d\n"</span>, fac(<span class="number">8</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"12! == %d\n"</span>, fac(<span class="number">12</span>));</span><br><span class="line">    <span class="built_in">strcpy</span>(s, <span class="string">"abcdef"</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"reversing 'abcdef', we get '%s'\n"</span>, \</span><br><span class="line">        reverse(s));</span><br><span class="line">    <span class="built_in">strcpy</span>(s, <span class="string">"madam"</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"reversing 'madam', we get '%s'\n"</span>, \</span><br><span class="line">        reverse(s));</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>根据样板编写封装代码</p>
-<ul>
-<li>[ ] 包含Python头文件</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"Python.h"</span></span></span><br></pre></td></tr></table></figure>
+<h3 id="根据样板编写封装代码"><a href="#根据样板编写封装代码" class="headerlink" title="根据样板编写封装代码"></a>根据样板编写封装代码</h3><h4 id="包含Python头文件"><a href="#包含Python头文件" class="headerlink" title="包含Python头文件"></a>包含Python头文件</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"Python.h"</span></span></span><br></pre></td></tr></table></figure>
 <p>如发现报错  <strong>No such file or directory</strong>，请编辑/etc/profile文件,在最后追加</p>
-</li>
-</ol>
 <a id="more"></a>
-   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">C_INCLUDE_PATH=/usr/local/python3.5/include/python3.5m</span><br><span class="line">export C_INCLUDE_PATH</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">这是我的虚拟机中python.h文件位置，一般都在usr/local/pythonX.X或usr/include/pythonX.X 目录下。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">source /etc/profile  //重新载入</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>[ ] 为每一个模块函数添加形如 <strong><em>PyObject\</em> Module_func()*</strong>的封装函数</p>
-<p>   对于每个需要在Python环境中访问函数，需要创建一个以<strong>static PyObject*</strong>标识，以模块名开头，紧接着是下划线和函数名本身的函数。</p>
-<p>   例如，若要让fac()函数可以在Python中导入，并将Extest作为最终的模块名称，需要创建一个名为Extest_fac()的封装函数。</p>
-<p>   封装函数的任务是将Python中的值转为C形式，接着调用相应的函数。当C函数执行完毕时，需要返回Python环境中。封装函数需要将函数返回值转为Python形式，并进行真正的返回。</p>
-<p>   那么如何进行这种转换呢？</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">C_INCLUDE_PATH=/usr/local/python3.5/include/python3.5m</span><br><span class="line">export C_INCLUDE_PATH</span><br><span class="line"></span><br><span class="line">这是我的虚拟机中python.h文件位置，一般都在usr/local/pythonX.X或usr/include/pythonX.X 目录下。</span><br><span class="line"></span><br><span class="line">source /etc/profile  //重新载入</span><br></pre></td></tr></table></figure>
+<h4 id="为每一个模块函数添加形如-PyObject-Module-func-的封装函数"><a href="#为每一个模块函数添加形如-PyObject-Module-func-的封装函数" class="headerlink" title="为每一个模块函数添加形如 PyObject\ Module_func()*的封装函数"></a>为每一个模块函数添加形如 <strong><em>PyObject\</em> Module_func()*</strong>的封装函数</h4><p>对于每个需要在Python环境中访问函数，需要创建一个以<strong>static PyObject*</strong>标识，以模块名开头，紧接着是下划线和函数名本身的函数。</p>
+<p>例如，若要让fac()函数可以在Python中导入，并将Extest作为最终的模块名称，需要创建一个名为Extest_fac()的封装函数。</p>
+<p>封装函数的任务是将Python中的值转为C形式，接着调用相应的函数。当C函数执行完毕时，需要返回Python环境中。封装函数需要将函数返回值转为Python形式，并进行真正的返回。</p>
+<p>那么如何进行这种转换呢？</p>
 <ul>
 <li>从Python到C时，调用一系列<strong>PyArg_Parse*()</strong>函数</li>
-<li><p>从C到Python时，调用<strong>Py_BuildValue()</strong>函数</p>
-<p>| 格式编码 |     Python数据类型     |   C/C++数据类型    |<br>| :———: | :——————————: | :————————: |<br>|  s、s#   |   str/unicode,len()    |    Char<em>(,int)     |<br>|  z、z#   | str/umicode/None,len() |  char</em>/NULL(,int)  |<br>|  u、u#   |     unicode,len()      | (Py_UNICODE<em>,int)  |<br>|    i     |          int           |        int         |<br>|    b     |          int           |        char        |<br>|    h     |          int           |       short        |<br>|    l     |          int           |        long        |<br>|    k     |      int or long       |   unsigned long    |<br>|    I     |      int or long       |    unsigned int    |<br>|    B     |          int           |   unsigned char    |<br>|    H     |          int           |   unsigned short   |<br>|    L     |          long          |     long long      |<br>|    K     |          long          | unsigned long long |<br>|    c     |          str           |        char        |<br>|    d     |         float          |       double       |<br>|    f     |         float          |       float        |<br>|    D     |        complex         |    Py_Complex</em>     |<br>|    O     |        任意类型        |     PyObject<em>      |<br>|    S     |          str           |   PyStringObject   |<br>|    N     |        任意类型        |     PyObJect</em>      |<br>|    O&amp;    |        任意类型        |      任意类型      |</p>
-<p>完整的Extest1.c封装函数</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"Python.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> PyObject *</span><br><span class="line">Extest_fac(PyObject *self, PyObject *args)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> num;</span><br><span class="line">    <span class="keyword">if</span> (!PyArg_ParseTuple(args, <span class="string">"i"</span>, &amp;num))</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">return</span> (PyObject*)Py_BuildValue(<span class="string">"i"</span>, fac(num));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> PyObject *</span><br><span class="line">Extest_doppel(PyObject *self, PyObject *args)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">char</span> *orig_str;</span><br><span class="line">    <span class="keyword">char</span> *dupe_str;</span><br><span class="line">    PyObject* retval;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!PyArg_ParseTuple(args, <span class="string">"s"</span>, &amp;orig_str))</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    retval = (PyObject*)Py_BuildValue(<span class="string">"ss"</span>, orig_str,</span><br><span class="line">        dupe_str=reverse(strdup(orig_str)));</span><br><span class="line">    <span class="built_in">free</span>(dupe_str);		<span class="comment">//释放内存 防止内存泄漏</span></span><br><span class="line">    <span class="keyword">return</span> retval;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> PyObject *</span><br><span class="line">Extest_test(PyObject *self, PyObject *args)</span><br><span class="line">&#123;</span><br><span class="line">    test();</span><br><span class="line">    <span class="keyword">return</span> (PyObject*)Py_BuildValue(<span class="string">""</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
+<li>从C到Python时，调用<strong>Py_BuildValue()</strong>函数</li>
 </ul>
-</li>
-<li><p>[ ] 为模块编写<strong><em>PyMethodDef ModuleMethods[]</em></strong>数组</p>
-<p>   目的：在某个地方将函数列出来，以便让Python解释器知道如何导入并访问这些函数</p>
-   <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> PyMethodDef</span><br><span class="line">ExtestMethods[] =</span><br><span class="line">&#123;</span><br><span class="line">    &#123; <span class="string">"fac"</span>, Extest_fac, METH_VARARGS &#125;,</span><br><span class="line">  <span class="comment">//常量 METH_VARARG 标识参数以元祖的形式给定</span></span><br><span class="line">    &#123; <span class="string">"doppel"</span>, Extest_doppel, METH_VARARGS &#125;,</span><br><span class="line">    &#123; <span class="string">"test"</span>, Extest_test, METH_VARARGS &#125;,</span><br><span class="line">    &#123; <span class="literal">NULL</span>, <span class="literal">NULL</span> &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>[ ] 添加模块初始化函数</p>
-   <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//for python2</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">initExtest</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="comment">//参数：模块名称、ModuleMethods[] 数组</span></span><br><span class="line">  Py_InitModule(“Extest<span class="string">",ExtestMethods);</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
-<p>   一开始我按照书上使用这段代码，但编译安装后，在导入包时，报错</p>
-<p>   <strong><em>undefined symbol: Py_InitModule</em></strong></p>
-<p>   在查阅资料后发现，Py_initModule是Python2版本的函数，Python3中改为使用</p>
-<p>   <strong><em>PyModule_Create()</em></strong> 初始化</p>
-   <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">struct</span> <span class="title">PyModuleDef</span> <span class="title">cModPyDem</span>=</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    PyModuleDef_HEAD_INIT,</span><br><span class="line">    <span class="string">"Extest"</span>,<span class="comment">//模块名称</span></span><br><span class="line">    <span class="string">""</span>,		<span class="comment">//模块注释</span></span><br><span class="line">    <span class="number">-1</span>,		<span class="comment">//size of per-interpreter state of the module, or -1 if the module keeps state in global variables </span></span><br><span class="line">    ExtestMethods</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//函数名必须为 PyInit_&lt;name&gt; 其中&lt;name&gt;是模块的名字</span></span><br><span class="line"><span class="function">PyMODINIT_FUNC <span class="title">PyInit_Extest</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> PyModule_Create(&amp;cModPyDem);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ol>
-<li><p>编译</p>
-<p>创建setup.py</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> distutils.core <span class="keyword">import</span> setup, Extension</span><br><span class="line"></span><br><span class="line">MOD = <span class="string">'Extest'</span></span><br><span class="line">setup(name=MOD, ext_modules=[Extension(MOD, sources=[<span class="string">'Extest2.c'</span>])])</span><br></pre></td></tr></table></figure>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>格式编码</th>
+<th>Python数据类型</th>
+<th>C/C++数据类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>s、s#</td>
+<td>str/unicode,len()</td>
+<td>Char*(,int)</td>
+</tr>
+<tr>
+<td>z、z#</td>
+<td>str/umicode/None,len()</td>
+<td>char*/NULL(,int)</td>
+</tr>
+<tr>
+<td>u、u#</td>
+<td>unicode,len()</td>
+<td>(Py_UNICODE*,int)</td>
+</tr>
+<tr>
+<td>i</td>
+<td>int</td>
+<td>int</td>
+</tr>
+<tr>
+<td>b</td>
+<td>int</td>
+<td>char</td>
+</tr>
+<tr>
+<td>h</td>
+<td>int</td>
+<td>short</td>
+</tr>
+<tr>
+<td>l</td>
+<td>int</td>
+<td>long</td>
+</tr>
+<tr>
+<td>k</td>
+<td>int or long</td>
+<td>unsigned long</td>
+</tr>
+<tr>
+<td>I</td>
+<td>int or long</td>
+<td>unsigned int</td>
+</tr>
+<tr>
+<td>B</td>
+<td>int</td>
+<td>unsigned char</td>
+</tr>
+<tr>
+<td>H</td>
+<td>int</td>
+<td>unsigned short</td>
+</tr>
+<tr>
+<td>L</td>
+<td>long</td>
+<td>long long</td>
+</tr>
+<tr>
+<td>K</td>
+<td>long</td>
+<td>unsigned long long</td>
+</tr>
+<tr>
+<td>c</td>
+<td>str</td>
+<td>char</td>
+</tr>
+<tr>
+<td>d</td>
+<td>float</td>
+<td>double</td>
+</tr>
+<tr>
+<td>f</td>
+<td>float</td>
+<td>float</td>
+</tr>
+<tr>
+<td>D</td>
+<td>complex</td>
+<td>Py_Complex*</td>
+</tr>
+<tr>
+<td>O</td>
+<td>任意类型</td>
+<td>PyObject*</td>
+</tr>
+<tr>
+<td>S</td>
+<td>str</td>
+<td>PyStringObject</td>
+</tr>
+<tr>
+<td>N</td>
+<td>任意类型</td>
+<td>PyObJect*</td>
+</tr>
+<tr>
+<td>O&amp;</td>
+<td>任意类型</td>
+<td>任意类型</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5 id="完整的Extest1-c封装函数"><a href="#完整的Extest1-c封装函数" class="headerlink" title="完整的Extest1.c封装函数"></a>完整的Extest1.c封装函数</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"Python.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> PyObject *</span><br><span class="line">Extest_fac(PyObject *self, PyObject *args)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">int</span> num;</span><br><span class="line"><span class="keyword">if</span> (!PyArg_ParseTuple(args, <span class="string">"i"</span>, &amp;num))</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line"><span class="keyword">return</span> (PyObject*)Py_BuildValue(<span class="string">"i"</span>, fac(num));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> PyObject *</span><br><span class="line">Extest_doppel(PyObject *self, PyObject *args)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">char</span> *orig_str;</span><br><span class="line"><span class="keyword">char</span> *dupe_str;</span><br><span class="line">PyObject* retval;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (!PyArg_ParseTuple(args, <span class="string">"s"</span>, &amp;orig_str))</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">retval = (PyObject*)Py_BuildValue(<span class="string">"ss"</span>, orig_str,</span><br><span class="line">    dupe_str=reverse(strdup(orig_str)));</span><br><span class="line"><span class="built_in">free</span>(dupe_str);		<span class="comment">//释放内存 防止内存泄漏</span></span><br><span class="line"><span class="keyword">return</span> retval;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> PyObject *</span><br><span class="line">Extest_test(PyObject *self, PyObject *args)</span><br><span class="line">&#123;</span><br><span class="line">test();</span><br><span class="line"><span class="keyword">return</span> (PyObject*)Py_BuildValue(<span class="string">""</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="为模块编写PyMethodDef-ModuleMethods-数组"><a href="#为模块编写PyMethodDef-ModuleMethods-数组" class="headerlink" title="为模块编写PyMethodDef ModuleMethods[]数组"></a>为模块编写<strong><em>PyMethodDef ModuleMethods[]</em></strong>数组</h4><p>目的：在某个地方将函数列出来，以便让Python解释器知道如何导入并访问这些函数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> PyMethodDef</span><br><span class="line">ExtestMethods[] =</span><br><span class="line">&#123;</span><br><span class="line">&#123; <span class="string">"fac"</span>, Extest_fac, METH_VARARGS &#125;,</span><br><span class="line">  <span class="comment">//常量 METH_VARARG 标识参数以元祖的形式给定</span></span><br><span class="line">&#123; <span class="string">"doppel"</span>, Extest_doppel, METH_VARARGS &#125;,</span><br><span class="line">&#123; <span class="string">"test"</span>, Extest_test, METH_VARARGS &#125;,</span><br><span class="line">&#123; <span class="literal">NULL</span>, <span class="literal">NULL</span> &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="添加模块初始化函数"><a href="#添加模块初始化函数" class="headerlink" title="添加模块初始化函数"></a>添加模块初始化函数</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//for python2</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">initExtest</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="comment">//参数：模块名称、ModuleMethods[] 数组</span></span><br><span class="line">  Py_InitModule(“Extest<span class="string">",ExtestMethods);</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>一开始我按照书上使用这段代码，但编译安装后，在导入包时，报错</p>
+<p><strong><em>undefined symbol: Py_InitModule</em></strong></p>
+<p>在查阅资料后发现，Py_initModule是Python2版本的函数，Python3中改为使用</p>
+<p><strong><em>PyModule_Create()</em></strong> 初始化</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">struct</span> <span class="title">PyModuleDef</span> <span class="title">cModPyDem</span>=</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">PyModuleDef_HEAD_INIT,</span><br><span class="line"><span class="string">"Extest"</span>,<span class="comment">//模块名称</span></span><br><span class="line"><span class="string">""</span>,		<span class="comment">//模块注释</span></span><br><span class="line"><span class="number">-1</span>,		<span class="comment">//size of per-interpreter state of the module, or -1 if the module keeps state in global variables </span></span><br><span class="line">ExtestMethods</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//函数名必须为 PyInit_&lt;name&gt; 其中&lt;name&gt;是模块的名字</span></span><br><span class="line"><span class="function">PyMODINIT_FUNC <span class="title">PyInit_Extest</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">return</span> PyModule_Create(&amp;cModPyDem);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h3><h4 id="创建setup-py"><a href="#创建setup-py" class="headerlink" title="创建setup.py"></a>创建setup.py</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> distutils.core <span class="keyword">import</span> setup, Extension</span><br><span class="line"></span><br><span class="line">MOD = <span class="string">'Extest'</span></span><br><span class="line">setup(name=MOD, ext_modules=[Extension(MOD, sources=[<span class="string">'Extest2.c'</span>])])</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$python3 setup.py build</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>导入并测试</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$python setup.py install</span><br></pre></td></tr></table></figure>
+<h4 id="导入并测试"><a href="#导入并测试" class="headerlink" title="导入并测试"></a>导入并测试</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$python setup.py install</span><br></pre></td></tr></table></figure>
 <p><img src="http://lonelyone-pics.oss-cn-beijing.aliyuncs.com/blog-pics/python%E6%8B%93%E5%B1%95/Extest.png" alt="Extest"></p>
-</li>
-</ol>
 <blockquote>
 <p>参考资料：</p>
 <ol>
@@ -525,7 +615,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#为Python拓展C代码"><span class="nav-number">1.</span> <span class="nav-text">为Python拓展C代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#为Python拓展C代码"><span class="nav-number">1.</span> <span class="nav-text">为Python拓展C代码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建应用代码"><span class="nav-number">1.1.</span> <span class="nav-text">创建应用代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#根据样板编写封装代码"><span class="nav-number">1.2.</span> <span class="nav-text">根据样板编写封装代码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#包含Python头文件"><span class="nav-number">1.2.1.</span> <span class="nav-text">包含Python头文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为每一个模块函数添加形如-PyObject-Module-func-的封装函数"><span class="nav-number">1.2.2.</span> <span class="nav-text">为每一个模块函数添加形如 PyObject\ Module_func()*的封装函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#完整的Extest1-c封装函数"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">完整的Extest1.c封装函数</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为模块编写PyMethodDef-ModuleMethods-数组"><span class="nav-number">1.2.3.</span> <span class="nav-text">为模块编写PyMethodDef ModuleMethods[]数组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加模块初始化函数"><span class="nav-number">1.2.4.</span> <span class="nav-text">添加模块初始化函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编译"><span class="nav-number">1.3.</span> <span class="nav-text">编译</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建setup-py"><span class="nav-number">1.3.1.</span> <span class="nav-text">创建setup.py</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#导入并测试"><span class="nav-number">1.3.2.</span> <span class="nav-text">导入并测试</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
