@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="为Python拓展C代码为Python编写拓展主要涉及的三个步骤  创建应用代码 根据样板编写封装代码 编译并测试  创建应用代码使用纯C编写自己要嵌入的代码。 12345678910111213141516171819202122232425262728293031323334353637383940// Extest1.c#include &amp;lt;stdio.h&amp;gt;#include &amp;lt">
+<meta name="description" content="概述为Python编写拓展主要涉及的三个步骤  创建应用代码 根据样板编写封装代码 编译并测试  创建应用代码使用纯C编写自己要嵌入的代码。 12345678910111213141516171819202122232425262728293031323334353637383940// Extest1.c#include &amp;lt;stdio.h&amp;gt;#include &amp;lt;stdlib.h&amp;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="为Python拓展C代码">
 <meta property="og:url" content="http://yoursite.com/2019/04/11/为Python拓展C代码/index.html">
 <meta property="og:site_name" content="一个人的征途">
-<meta property="og:description" content="为Python拓展C代码为Python编写拓展主要涉及的三个步骤  创建应用代码 根据样板编写封装代码 编译并测试  创建应用代码使用纯C编写自己要嵌入的代码。 12345678910111213141516171819202122232425262728293031323334353637383940// Extest1.c#include &amp;lt;stdio.h&amp;gt;#include &amp;lt">
+<meta property="og:description" content="概述为Python编写拓展主要涉及的三个步骤  创建应用代码 根据样板编写封装代码 编译并测试  创建应用代码使用纯C编写自己要嵌入的代码。 12345678910111213141516171819202122232425262728293031323334353637383940// Extest1.c#include &amp;lt;stdio.h&amp;gt;#include &amp;lt;stdlib.h&amp;">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://lonelyone-pics.oss-cn-beijing.aliyuncs.com/blog-pics/python%E6%8B%93%E5%B1%95/Extest.png">
-<meta property="og:updated_time" content="2019-04-11T07:30:33.974Z">
+<meta property="og:updated_time" content="2019-04-15T06:06:33.921Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="为Python拓展C代码">
-<meta name="twitter:description" content="为Python拓展C代码为Python编写拓展主要涉及的三个步骤  创建应用代码 根据样板编写封装代码 编译并测试  创建应用代码使用纯C编写自己要嵌入的代码。 12345678910111213141516171819202122232425262728293031323334353637383940// Extest1.c#include &amp;lt;stdio.h&amp;gt;#include &amp;lt">
+<meta name="twitter:description" content="概述为Python编写拓展主要涉及的三个步骤  创建应用代码 根据样板编写封装代码 编译并测试  创建应用代码使用纯C编写自己要嵌入的代码。 12345678910111213141516171819202122232425262728293031323334353637383940// Extest1.c#include &amp;lt;stdio.h&amp;gt;#include &amp;lt;stdlib.h&amp;">
 <meta name="twitter:image" content="http://lonelyone-pics.oss-cn-beijing.aliyuncs.com/blog-pics/python%E6%8B%93%E5%B1%95/Extest.png">
 
 
@@ -301,7 +301,7 @@
       
 
       
-        <h2 id="为Python拓展C代码"><a href="#为Python拓展C代码" class="headerlink" title="为Python拓展C代码"></a>为Python拓展C代码</h2><p>为Python编写拓展主要涉及的三个步骤</p>
+        <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>为Python编写拓展主要涉及的三个步骤</p>
 <ul>
 <li>创建应用代码</li>
 <li>根据样板编写封装代码</li>
@@ -494,6 +494,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/04/12/test/" rel="prev" title="test">
+                test <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -569,7 +573,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -615,7 +619,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#为Python拓展C代码"><span class="nav-number">1.</span> <span class="nav-text">为Python拓展C代码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建应用代码"><span class="nav-number">1.1.</span> <span class="nav-text">创建应用代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#根据样板编写封装代码"><span class="nav-number">1.2.</span> <span class="nav-text">根据样板编写封装代码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#包含Python头文件"><span class="nav-number">1.2.1.</span> <span class="nav-text">包含Python头文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为每一个模块函数添加形如-PyObject-Module-func-的封装函数"><span class="nav-number">1.2.2.</span> <span class="nav-text">为每一个模块函数添加形如 PyObject\ Module_func()*的封装函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#完整的Extest1-c封装函数"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">完整的Extest1.c封装函数</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为模块编写PyMethodDef-ModuleMethods-数组"><span class="nav-number">1.2.3.</span> <span class="nav-text">为模块编写PyMethodDef ModuleMethods[]数组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加模块初始化函数"><span class="nav-number">1.2.4.</span> <span class="nav-text">添加模块初始化函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编译"><span class="nav-number">1.3.</span> <span class="nav-text">编译</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建setup-py"><span class="nav-number">1.3.1.</span> <span class="nav-text">创建setup.py</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#导入并测试"><span class="nav-number">1.3.2.</span> <span class="nav-text">导入并测试</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建应用代码"><span class="nav-number">2.</span> <span class="nav-text">创建应用代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#根据样板编写封装代码"><span class="nav-number">3.</span> <span class="nav-text">根据样板编写封装代码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#包含Python头文件"><span class="nav-number">3.1.</span> <span class="nav-text">包含Python头文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为每一个模块函数添加形如-PyObject-Module-func-的封装函数"><span class="nav-number">3.2.</span> <span class="nav-text">为每一个模块函数添加形如 PyObject\ Module_func()*的封装函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#完整的Extest1-c封装函数"><span class="nav-number">3.2.1.</span> <span class="nav-text">完整的Extest1.c封装函数</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为模块编写PyMethodDef-ModuleMethods-数组"><span class="nav-number">3.3.</span> <span class="nav-text">为模块编写PyMethodDef ModuleMethods[]数组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加模块初始化函数"><span class="nav-number">3.4.</span> <span class="nav-text">添加模块初始化函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编译"><span class="nav-number">4.</span> <span class="nav-text">编译</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建setup-py"><span class="nav-number">4.1.</span> <span class="nav-text">创建setup.py</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#导入并测试"><span class="nav-number">4.2.</span> <span class="nav-text">导入并测试</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -658,10 +662,11 @@
 
 
 
-  <script src="https://unpkg.com/mermaid@<%= theme.mermaid.version %>/dist/mermaid.min.js"></script>
+
+  <script src="https://unpkg.com/mermaid@10.15.3/dist/mermaid.min.js"></script>
   <script>
     if (window.mermaid) {
-      mermaid.initialize({theme: 'forest'});
+      mermaid.initialize("");
     }
   </script>
 

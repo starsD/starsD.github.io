@@ -229,6 +229,147 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/12/test/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Xingchen Dai">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个人的征途">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/12/test/" itemprop="url">test</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-12T10:46:53+08:00">
+                2019-04-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <pre class="mermaid">graph TD
+A[下采样] -->B(上采样)
+A-->|重复|A
+    B -->|减少细节|C(高斯双边滤波/均值漂移滤波)
+B-->|重复|B
+    C -->|图像色彩平滑|D(灰度化)
+    D --> H(中值滤波)
+    H -->E(边缘检测 获取轮廓)
+    E -->|合并|F(图像合并)
+    C -->|合并|F
+    F -->G(输出结果)</pre>
+
+
+<pre class="mermaid">sequenceDiagram
+Observable->>Subscriber:A;
+Subscriber->>Observable:B;
+Observable->>OnSubscribe:C;
+OnSubscribe->>Subscriber:D;
+OnSubscribe->>Subscriber:E;
+OnSubscribe->>Subscriber:F;
+OnSubscribe->>Subscriber:G;
+OnSubscribe->>Subscriber:H;</pre>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/11/为Python拓展C代码/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -299,7 +440,7 @@
 
       
         
-          <h2 id="为Python拓展C代码"><a href="#为Python拓展C代码" class="headerlink" title="为Python拓展C代码"></a>为Python拓展C代码</h2><p>为Python编写拓展主要涉及的三个步骤</p>
+          <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>为Python编写拓展主要涉及的三个步骤</p>
 <ul>
 <li>创建应用代码</li>
 <li>根据样板编写封装代码</li>
@@ -792,7 +933,7 @@ X_{n+1}=\left(a X_{n}+c\right) \bmod m</script><ul>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -865,10 +1006,11 @@ X_{n+1}=\left(a X_{n}+c\right) \bmod m</script><ul>
 
 
 
-  <script src="https://unpkg.com/mermaid@<%= theme.mermaid.version %>/dist/mermaid.min.js"></script>
+
+  <script src="https://unpkg.com/mermaid@10.15.3/dist/mermaid.min.js"></script>
   <script>
     if (window.mermaid) {
-      mermaid.initialize({theme: 'forest'});
+      mermaid.initialize("");
     }
   </script>
 
